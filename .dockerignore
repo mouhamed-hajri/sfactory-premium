@@ -1,0 +1,7 @@
+node_modules/
+sfactory.db
+.env
+*.local
+.git
+.gitignore
+npm-debug.log*

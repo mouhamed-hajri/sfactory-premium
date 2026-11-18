@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caissier — S-Factory Premium</title>
+  <link rel="stylesheet" href="staff.css" />
+</head>
+<body>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+      <a href="index.html" class="sidebar-logo">S-Factory <span>Caisse</span></a>
+      <button class="sidebar-close" id="sidebarClose">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="sidebar-user">
+      <div class="user-avatar" id="userAvatar">C</div>
+      <div class="user-details">
+        <div class="user-name" id="sidebarName">Caissier</div>
+        <div class="user-role">Caissier</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="#" class="nav-item active" data-section="clients">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          Clients
+        </a></li>
+        <li><a href="#" class="nav-item" data-section="membership">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          Abonnement
+        </a></li>
+        <li><a href="#" class="nav-item" data-section="payment">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          Paiement
+        </a></li>
+        <li><a href="#" class="nav-item" data-section="history">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="12 8 12 12 14 14"/><path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5"/></svg>
+          Historique
+        </a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-bottom">
+      <button class="logout-btn" id="logoutBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Déconnexion
+      </button>
+    </div>
+  </aside>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button>
+      <div class="topbar-title" id="topbarTitle">Clients</div>
+      <div class="topbar-right">
+        <div class="topbar-user">
+          <div class="topbar-avatar" id="topbarAvatar">C</div>
+          <span id="topbarName">Caissier</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="page-content">
+
+      <!-- ── CLIENTS ── -->
+      <section class="section active" id="sec-clients">
+        <div class="page-header">
+          <h1 class="page-title">Clients</h1>
+          <p class="page-sub">Rechercher un profil client</p>
+        </div>
+        <div class="search-bar">
+          <input type="text" class="search-input" id="clientSearch" placeholder="Nom, email, téléphone…" />
+          <button class="btn btn-outline" onclick="searchClients()">Rechercher</button>
+          <button class="btn btn-gold" onclick="openNewClientModal()">+ Nouveau client</button>
+        </div>
+        <div class="card">
+          <div class="data-table-wrap" id="clientsTable">
+            <div class="empty-state"><div class="empty-icon">🔍</div><p>Lancez une recherche pour afficher les clients.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── MEMBERSHIP ── -->
+      <section class="section" id="sec-membership">
+        <div class="page-header">
+          <h1 class="page-title">Assigner un abonnement</h1>
+          <p class="page-sub">Souscrire une formule pour un client</p>
+        </div>
+        <div class="card" style="max-width:520px;">
+          <div class="alert" id="membershipAlert"></div>
+          <div class="form-group">
+            <label class="form-label">Client (email)</label>
+            <div style="display:flex;gap:8px;">
+              <input type="email" class="form-input" id="mEmail" placeholder="client@email.com" style="flex:1;" />
+              <button class="btn btn-outline btn-sm" onclick="lookupClient()">Chercher</button>
+            </div>
+            <div id="clientFound" style="margin-top:8px;font-size:.82rem;color:var(--gold);"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Formule</label>
+            <select class="form-select" id="mPlanId"></select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Date de début</label>
+              <input type="date" class="form-input" id="mStartDate" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Paiement</label>
+              <select class="form-select" id="mPayment">
+                <option value="paid">Payé</option>
+                <option value="pending">En attente</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-gold" id="membershipSubmit" onclick="submitMembership()">Valider l'abonnement</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── PAYMENT ── -->
+      <section class="section" id="sec-payment">
+        <div class="page-header">
+          <h1 class="page-title">Enregistrer un paiement</h1>
+          <p class="page-sub">Marquer un paiement reçu</p>
+        </div>
+        <div class="card" style="max-width:480px;">
+          <div class="alert" id="paymentAlert"></div>
+          <div class="form-group">
+            <label class="form-label">Client (email)</label>
+            <div style="display:flex;gap:8px;">
+              <input type="email" class="form-input" id="pEmail" placeholder="client@email.com" style="flex:1;" />
+              <button class="btn btn-outline btn-sm" onclick="lookupPaymentClient()">Chercher</button>
+            </div>
+            <div id="paymentClientFound" style="margin-top:8px;font-size:.82rem;color:var(--gold);"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Montant (TND)</label>
+              <input type="number" class="form-input" id="pAmount" step="0.01" min="0" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Méthode</label>
+              <select class="form-select" id="pMethod">
+                <option value="cash">Espèces</option>
+                <option value="card">Carte</option>
+                <option value="virement">Virement</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Notes</label>
+            <input type="text" class="form-input" id="pNotes" placeholder="Optionnel" />
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-gold" id="paymentSubmit" onclick="submitPayment()">Enregistrer</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── HISTORY ── -->
+      <section class="section" id="sec-history">
+        <div class="page-header">
+          <h1 class="page-title">Historique des paiements</h1>
+          <p class="page-sub">Tous les paiements enregistrés</p>
+        </div>
+        <div class="card">
+          <div class="data-table-wrap" id="historyTable"><div class="empty-state"><p>Chargement…</p></div></div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Modal: Nouveau client -->
+  <div class="modal-backdrop" id="newClientModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeNewClientModal()">✕</button>
+      <div class="modal-title">Nouveau client</div>
+      <div class="alert" id="newClientAlert"></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Prénom</label><input type="text" class="form-input" id="ncFirst" /></div>
+        <div class="form-group"><label class="form-label">Nom</label><input type="text" class="form-input" id="ncLast" /></div>
+      </div>
+      <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="ncEmail" /></div>
+      <div class="form-group"><label class="form-label">Téléphone</label><input type="text" class="form-input" id="ncPhone" placeholder="+216 XX XXX XXX" /></div>
+      <div class="form-actions">
+        <button class="btn btn-outline" onclick="closeNewClientModal()">Annuler</button>
+        <button class="btn btn-gold" onclick="submitNewClient()">Créer</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="cashier.js"></script>
+</body>
+</html>

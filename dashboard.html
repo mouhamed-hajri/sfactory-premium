@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mon Espace — S-Factory Premium</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-top">
+      <a href="index.html" class="sidebar-logo">
+        S-Factory <span>Premium</span>
+      </a>
+
+      <!-- Mobile close -->
+      <button class="sidebar-close" id="sidebarClose" aria-label="Fermer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <!-- User info -->
+    <div class="sidebar-user">
+      <div class="user-avatar" id="userAvatar">?</div>
+      <div class="user-details">
+        <div class="user-name" id="sidebarName">Chargement…</div>
+        <div class="user-role">Membre</div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="sidebar-nav">
+      <ul>
+        <li>
+          <a href="#" class="nav-item active" data-section="dashboard">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            Tableau de bord
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-item" data-section="profile">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Mon Profil
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-item" data-section="membership">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            Mon Abonnement
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-item" data-section="qrcode">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="5" height="5"/><rect x="16" y="3" width="5" height="5"/><rect x="3" y="16" width="5" height="5"/><path d="M21 16h-3v3m0 2h3M14 3h1v5h-1M14 10v1m7 4v1"/></svg>
+            Mon QR Code
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-item" data-section="calendar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Calendrier
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-item" data-section="sessions">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Mes Séances
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-item" data-section="progress">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Ma Progression
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-item" data-section="settings">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M19.07 19.07l-1.41-1.41M4.93 19.07l1.41-1.41M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>
+            Paramètres
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <button class="logout-btn" id="logoutBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Déconnexion
+      </button>
+    </div>
+
+  </aside>
+
+  <!-- Sidebar overlay (mobile) -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ── Main content ── -->
+  <main class="main">
+
+    <!-- Top bar -->
+    <header class="topbar">
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="topbar-title" id="topbarTitle">Tableau de bord</div>
+
+      <div class="topbar-right">
+        <div class="notif-btn" id="notifBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="notif-dot" id="notifDot" style="display:none;"></span>
+        </div>
+        <div class="topbar-user">
+          <div class="topbar-avatar" id="topbarAvatar">?</div>
+          <span id="topbarName">…</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Page sections -->
+    <div class="page-content">
+
+      <!-- ════ DASHBOARD SECTION ════ -->
+      <section class="section active" id="sec-dashboard">
+
+        <div class="page-header">
+          <h1 class="page-title">Bienvenue, <span id="welcomeName">…</span> 👋</h1>
+          <p class="page-sub">Voici un aperçu de votre espace membre.</p>
+        </div>
+
+        <!-- Stats row -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">🏋️</div>
+            <div class="stat-body">
+              <div class="stat-num" id="statCheckins">—</div>
+              <div class="stat-label">Entrées totales</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🎯</div>
+            <div class="stat-body">
+              <div class="stat-num" id="statSessions">—</div>
+              <div class="stat-label">Séances avec coach</div>
+            </div>
+          </div>
+          <div class="stat-card gold">
+            <div class="stat-icon">💳</div>
+            <div class="stat-body">
+              <div class="stat-num" id="statPlanName">—</div>
+              <div class="stat-label">Formule actuelle</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">⏳</div>
+            <div class="stat-body">
+              <div class="stat-num" id="statDaysLeft">—</div>
+              <div class="stat-label">Jours restants</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Membership card -->
+        <div class="dash-grid">
+          <div>
+            <h3 class="card-section-title">Mon abonnement</h3>
+            <div class="membership-card" id="membershipCard">
+              <div class="mc-loading">Chargement…</div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="card-section-title">Notifications récentes</h3>
+            <div class="notif-list" id="notifList">
+              <div class="notif-empty">Aucune notification.</div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ════ PROFILE SECTION ════ -->
+      <section class="section" id="sec-profile">
+        <div class="page-header">
+          <h1 class="page-title">Mon Profil</h1>
+          <p class="page-sub">Vos informations personnelles.</p>
+        </div>
+        <div class="profile-card" id="profileCard">
+          <div class="profile-avatar-wrap">
+            <div class="profile-avatar" id="profileAvatar">?</div>
+          </div>
+          <div class="profile-info" id="profileInfo">
+            <div class="mc-loading">Chargement…</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════ MEMBERSHIP SECTION ════ -->
+      <section class="section" id="sec-membership">
+        <div class="page-header">
+          <h1 class="page-title">Mon Abonnement</h1>
+          <p class="page-sub">Détails de votre formule d'abonnement.</p>
+        </div>
+        <div id="membershipDetail">
+          <div class="mc-loading">Chargement…</div>
+        </div>
+      </section>
+
+      <!-- ════ QR CODE SECTION ════ -->
+      <section class="section" id="sec-qrcode">
+        <div class="page-header">
+          <h1 class="page-title">Mon QR Code</h1>
+          <p class="page-sub">Scannez ce code à l'entrée et à la sortie du gym pour enregistrer votre présence.</p>
+        </div>
+        <div class="qr-card">
+          <div class="qr-wrap" id="qrWrap">
+            <div class="mc-loading">Génération du QR code…</div>
+          </div>
+          <div class="qr-instructions">
+            <div class="qr-step"><span class="qr-num">1</span>Montrez ce QR code au scanner à l'entrée</div>
+            <div class="qr-step"><span class="qr-num">2</span>Votre entrée est enregistrée automatiquement</div>
+            <div class="qr-step"><span class="qr-num">3</span>Scannez à nouveau en partant pour valider votre séance</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════ CALENDAR SECTION ════ -->
+      <section class="section" id="sec-calendar">
+        <div class="page-header">
+          <h1 class="page-title">Calendrier de présence</h1>
+          <p class="page-sub">Visualisez vos jours d'entraînement.</p>
+        </div>
+        <div class="calendar-container" id="calendarContainer">
+          <div class="mc-loading">Chargement…</div>
+        </div>
+      </section>
+
+      <!-- ════ SESSIONS SECTION ════ -->
+      <section class="section" id="sec-sessions">
+        <div class="page-header">
+          <h1 class="page-title">Mes Séances</h1>
+          <p class="page-sub">Historique de vos séances de coaching.</p>
+        </div>
+        <div id="sessionsContent">
+          <div class="mc-loading">Chargement…</div>
+        </div>
+      </section>
+
+      <!-- ════ PROGRESS SECTION ════ -->
+      <section class="section" id="sec-progress">
+        <div class="page-header">
+          <h1 class="page-title">Ma Progression</h1>
+          <p class="page-sub">Suivi de vos mesures corporelles.</p>
+        </div>
+        <div id="progressContent">
+          <div class="mc-loading">Chargement…</div>
+        </div>
+      </section>
+
+      <!-- ════ SETTINGS SECTION ════ -->
+      <section class="section" id="sec-settings">
+        <div class="page-header">
+          <h1 class="page-title">Paramètres</h1>
+          <p class="page-sub">Gérez votre compte et vos préférences.</p>
+        </div>
+        <div class="settings-grid">
+          <div class="settings-card">
+            <div class="settings-card-title">Modifier le profil</div>
+            <div class="alert" id="profileAlert"></div>
+            <div class="form-group">
+              <label class="form-label">Prénom</label>
+              <input type="text" class="form-input" id="setFirstName" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Nom</label>
+              <input type="text" class="form-input" id="setLastName" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Téléphone</label>
+              <input type="text" class="form-input" id="setPhone" placeholder="+216 XX XXX XXX" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Objectif</label>
+              <input type="text" class="form-input" id="setGoal" placeholder="Votre objectif fitness" />
+            </div>
+            <div class="form-actions">
+              <button class="cs-btn" onclick="saveProfile()">Enregistrer</button>
+            </div>
+          </div>
+          <div class="settings-card">
+            <div class="settings-card-title">Changer le mot de passe</div>
+            <div class="alert" id="pwAlert"></div>
+            <div class="form-group">
+              <label class="form-label">Mot de passe actuel</label>
+              <input type="password" class="form-input" id="pwCurrent" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Nouveau mot de passe</label>
+              <input type="password" class="form-input" id="pwNew" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Confirmer le nouveau mot de passe</label>
+              <input type="password" class="form-input" id="pwConfirm" />
+            </div>
+            <div class="form-actions">
+              <button class="cs-btn" onclick="changePassword()">Changer</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

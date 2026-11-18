@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connexion — S-Factory Premium</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+
+  <div class="login-page">
+
+    <!-- Left panel: branding -->
+    <div class="login-panel-left">
+      <div class="panel-content">
+        <a href="index.html" class="back-link">← Retour au site</a>
+
+        <div class="brand">
+          <div class="brand-logo">S-Factory <span>Premium</span></div>
+          <div class="brand-sub">Monastir · Tunisie</div>
+        </div>
+
+        <div class="panel-quote">
+          <p class="quote-text">"La discipline est le pont entre vos objectifs et vos résultats."</p>
+        </div>
+
+        <div class="panel-stats">
+          <div class="pstat"><span class="pnum">500+</span><span class="plbl">Membres</span></div>
+          <div class="pstat"><span class="pnum">10+</span><span class="plbl">Coachs</span></div>
+          <div class="pstat"><span class="pnum">7j/7</span><span class="plbl">Ouvert</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right panel: form -->
+    <div class="login-panel-right">
+      <div class="form-card">
+
+        <!-- Tab switcher -->
+        <div class="form-tabs">
+          <button class="tab-btn active" id="tabLogin" onclick="switchTab('login')">
+            Connexion
+          </button>
+          <button class="tab-btn" id="tabRegister" onclick="switchTab('register')">
+            S'inscrire
+          </button>
+        </div>
+
+        <!-- Alert box -->
+        <div class="form-alert" id="formAlert" style="display:none;"></div>
+
+        <!-- ── LOGIN FORM ── -->
+        <form id="loginForm" class="auth-form active" novalidate>
+          <h2 class="form-title">Bon retour 👋</h2>
+          <p class="form-desc">Connectez-vous à votre espace membre.</p>
+
+          <div class="field-group">
+            <label for="loginEmail">Adresse email</label>
+            <input type="email" id="loginEmail" name="email"
+                   placeholder="votre@email.com" autocomplete="email" required />
+          </div>
+
+          <div class="field-group">
+            <label for="loginPassword">Mot de passe</label>
+            <div class="input-wrap">
+              <input type="password" id="loginPassword" name="password"
+                     placeholder="••••••••" autocomplete="current-password" required />
+              <button type="button" class="eye-btn" onclick="togglePassword('loginPassword', this)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit" id="loginBtn">
+            Se connecter
+          </button>
+
+          <p class="form-switch">
+            Pas encore membre ?
+            <a href="#" onclick="switchTab('register'); return false;">Créer un compte</a>
+          </p>
+        </form>
+
+        <!-- ── REGISTER FORM ── -->
+        <form id="registerForm" class="auth-form" novalidate>
+          <h2 class="form-title">Rejoignez-nous 💪</h2>
+          <p class="form-desc">Créez votre espace membre S-Factory Premium.</p>
+
+          <div class="field-row">
+            <div class="field-group">
+              <label for="regFirstName">Prénom</label>
+              <input type="text" id="regFirstName" name="first_name"
+                     placeholder="Prénom" autocomplete="given-name" required />
+            </div>
+            <div class="field-group">
+              <label for="regLastName">Nom</label>
+              <input type="text" id="regLastName" name="last_name"
+                     placeholder="Nom" autocomplete="family-name" required />
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="regEmail">Adresse email</label>
+            <input type="email" id="regEmail" name="email"
+                   placeholder="votre@email.com" autocomplete="email" required />
+          </div>
+
+          <div class="field-group">
+            <label for="regPhone">Téléphone</label>
+            <input type="tel" id="regPhone" name="phone"
+                   placeholder="+216 XX XXX XXX" autocomplete="tel" />
+          </div>
+
+          <div class="field-group">
+            <label for="regGoal">Votre objectif</label>
+            <select id="regGoal" name="goal">
+              <option value="" disabled selected>Choisissez un objectif</option>
+              <option value="perte_poids">Perte de poids</option>
+              <option value="prise_masse">Prise de masse / Musculation</option>
+              <option value="cardio">Cardio &amp; Endurance</option>
+              <option value="transformation">Transformation corporelle</option>
+              <option value="autre">Autre</option>
+            </select>
+          </div>
+
+          <div class="field-row">
+            <div class="field-group">
+              <label for="regPassword">Mot de passe</label>
+              <div class="input-wrap">
+                <input type="password" id="regPassword" name="password"
+                       placeholder="Min. 6 caractères" autocomplete="new-password" required />
+                <button type="button" class="eye-btn" onclick="togglePassword('regPassword', this)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="field-group">
+              <label for="regConfirm">Confirmer</label>
+              <div class="input-wrap">
+                <input type="password" id="regConfirm" name="confirm"
+                       placeholder="Répéter" autocomplete="new-password" required />
+                <button type="button" class="eye-btn" onclick="togglePassword('regConfirm', this)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit" id="registerBtn">
+            Créer mon compte
+          </button>
+
+          <p class="form-switch">
+            Déjà membre ?
+            <a href="#" onclick="switchTab('login'); return false;">Se connecter</a>
+          </p>
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>
